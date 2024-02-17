@@ -35,5 +35,11 @@
 		"parserOptions": {
 			"project": true
 		}
+	},
+	"postcss": {
+		"plugins": {
+			"tailwindcss": {},
+			"autoprefixer": {}
+		}
 	}
 }

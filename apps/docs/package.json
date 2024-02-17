@@ -17,12 +17,16 @@
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^14.1.0",
 		"@repo/eslint-config": "workspace:*",
+		"@repo/tailwind-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@types/eslint": "^8.56.2",
 		"@types/node": "^20.11.19",
 		"@types/react": "^18.2.56",
 		"@types/react-dom": "^18.2.19",
+		"autoprefixer": "^10.4.17",
 		"eslint": "^8.56.0",
+		"postcss": "^8.4.35",
+		"tailwindcss": "^3.4.1",
 		"typescript": "^5.3.3"
 	},
 	"eslintConfig": {
@@ -33,6 +37,12 @@
 		"parser": "@typescript-eslint/parser",
 		"parserOptions": {
 			"project": true
+		}
+	},
+	"postcss": {
+		"plugins": {
+			"tailwindcss": {},
+			"autoprefixer": {}
 		}
 	}
 }
