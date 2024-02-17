@@ -1,567 +1,506 @@
 {
-  "id": "9432f4b1-0276-405c-9458-ffc370957353",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
-  "tables": {
-    "locations": {
-      "name": "locations",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "description": {
-          "name": "description",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "type": {
-          "name": "type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "locations_type_idx": {
-          "name": "locations_type_idx",
-          "columns": [
-            "type"
-          ],
-          "isUnique": false
-        }
-      },
-      "foreignKeys": {
-        "locations_user_id_users_id_fk": {
-          "name": "locations_user_id_users_id_fk",
-          "tableFrom": "locations",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "print_spools": {
-      "name": "print_spools",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "print_id": {
-          "name": "print_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "spool_id": {
-          "name": "spool_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "amount_used": {
-          "name": "amount_used",
-          "type": "numeric(12, 2)",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "print_spools_print_id_prints_id_fk": {
-          "name": "print_spools_print_id_prints_id_fk",
-          "tableFrom": "print_spools",
-          "tableTo": "prints",
-          "columnsFrom": [
-            "print_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "print_spools_spool_id_spools_id_fk": {
-          "name": "print_spools_spool_id_spools_id_fk",
-          "tableFrom": "print_spools",
-          "tableTo": "spools",
-          "columnsFrom": [
-            "spool_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "printers": {
-      "name": "printers",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "type": {
-          "name": "type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "location_ids": {
-          "name": "location_ids",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "prints": {
-      "name": "prints",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "url": {
-          "name": "url",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "start_time": {
-          "name": "start_time",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "end_time": {
-          "name": "end_time",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "user_printer_id": {
-          "name": "user_printer_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "status": {
-          "name": "status",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "tags": {
-          "name": "tags",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "prints_user_id_idx": {
-          "name": "prints_user_id_idx",
-          "columns": [
-            "user_id"
-          ],
-          "isUnique": false
-        },
-        "prints_user_printer_id_idx": {
-          "name": "prints_user_printer_id_idx",
-          "columns": [
-            "user_printer_id"
-          ],
-          "isUnique": false
-        }
-      },
-      "foreignKeys": {
-        "prints_user_id_users_id_fk": {
-          "name": "prints_user_id_users_id_fk",
-          "tableFrom": "prints",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "prints_user_printer_id_user_printers_id_fk": {
-          "name": "prints_user_printer_id_user_printers_id_fk",
-          "tableFrom": "prints",
-          "tableTo": "user_printers",
-          "columnsFrom": [
-            "user_printer_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "spools": {
-      "name": "spools",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "sku": {
-          "name": "sku",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "material": {
-          "name": "material",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "color_name": {
-          "name": "color_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "color": {
-          "name": "color",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "brand": {
-          "name": "brand",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "original_quantity": {
-          "name": "original_quantity",
-          "type": "numeric(12, 2)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "remaining_quantity": {
-          "name": "remaining_quantity",
-          "type": "numeric(12, 2)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "purchase_price": {
-          "name": "purchase_price",
-          "type": "numeric(12, 2)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "purchase_date": {
-          "name": "purchase_date",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "location_id": {
-          "name": "location_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "last_dried_date": {
-          "name": "last_dried_date",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "tags": {
-          "name": "tags",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "spools_sku_idx": {
-          "name": "spools_sku_idx",
-          "columns": [
-            "sku"
-          ],
-          "isUnique": false
-        },
-        "spools_user_id_idx": {
-          "name": "spools_user_id_idx",
-          "columns": [
-            "user_id"
-          ],
-          "isUnique": false
-        },
-        "spools_original_quantity_idx": {
-          "name": "spools_original_quantity_idx",
-          "columns": [
-            "original_quantity"
-          ],
-          "isUnique": false
-        },
-        "spools_material_idx": {
-          "name": "spools_material_idx",
-          "columns": [
-            "material"
-          ],
-          "isUnique": false
-        },
-        "spools_color_name_idx": {
-          "name": "spools_color_name_idx",
-          "columns": [
-            "color_name"
-          ],
-          "isUnique": false
-        },
-        "spools_brand_idx": {
-          "name": "spools_brand_idx",
-          "columns": [
-            "brand"
-          ],
-          "isUnique": false
-        }
-      },
-      "foreignKeys": {
-        "spools_user_id_users_id_fk": {
-          "name": "spools_user_id_users_id_fk",
-          "tableFrom": "spools",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "spools_location_id_locations_id_fk": {
-          "name": "spools_location_id_locations_id_fk",
-          "tableFrom": "spools",
-          "tableTo": "locations",
-          "columnsFrom": [
-            "location_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "user_printers": {
-      "name": "user_printers",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "printer_id": {
-          "name": "printer_id",
-          "type": "bigint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "nickname": {
-          "name": "nickname",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "location_ids": {
-          "name": "location_ids",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "tags": {
-          "name": "tags",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "user_printers_user_nickname_idx": {
-          "name": "user_printers_user_nickname_idx",
-          "columns": [
-            "user_id",
-            "nickname"
-          ],
-          "isUnique": true
-        }
-      },
-      "foreignKeys": {
-        "user_printers_user_id_users_id_fk": {
-          "name": "user_printers_user_id_users_id_fk",
-          "tableFrom": "user_printers",
-          "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "user_printers_printer_id_printers_id_fk": {
-          "name": "user_printers_printer_id_printers_id_fk",
-          "tableFrom": "user_printers",
-          "tableTo": "printers",
-          "columnsFrom": [
-            "printer_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "users": {
-      "name": "users",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "bigserial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "username": {
-          "name": "username",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "email": {
-          "name": "email",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "users_username_unique": {
-          "name": "users_username_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "username"
-          ]
-        },
-        "users_email_unique": {
-          "name": "users_email_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
-        }
-      }
-    }
-  },
-  "enums": {},
-  "schemas": {},
-  "_meta": {
-    "columns": {},
-    "schemas": {},
-    "tables": {}
-  }
+	"id": "9432f4b1-0276-405c-9458-ffc370957353",
+	"prevId": "00000000-0000-0000-0000-000000000000",
+	"version": "5",
+	"dialect": "pg",
+	"tables": {
+		"locations": {
+			"name": "locations",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"description": {
+					"name": "description",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"type": {
+					"name": "type",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {
+				"locations_type_idx": {
+					"name": "locations_type_idx",
+					"columns": ["type"],
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {
+				"locations_user_id_users_id_fk": {
+					"name": "locations_user_id_users_id_fk",
+					"tableFrom": "locations",
+					"tableTo": "users",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"print_spools": {
+			"name": "print_spools",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"print_id": {
+					"name": "print_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"spool_id": {
+					"name": "spool_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"amount_used": {
+					"name": "amount_used",
+					"type": "numeric(12, 2)",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"print_spools_print_id_prints_id_fk": {
+					"name": "print_spools_print_id_prints_id_fk",
+					"tableFrom": "print_spools",
+					"tableTo": "prints",
+					"columnsFrom": ["print_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"print_spools_spool_id_spools_id_fk": {
+					"name": "print_spools_spool_id_spools_id_fk",
+					"tableFrom": "print_spools",
+					"tableTo": "spools",
+					"columnsFrom": ["spool_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"printers": {
+			"name": "printers",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"type": {
+					"name": "type",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"location_ids": {
+					"name": "location_ids",
+					"type": "jsonb",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"prints": {
+			"name": "prints",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"url": {
+					"name": "url",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"start_time": {
+					"name": "start_time",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"end_time": {
+					"name": "end_time",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"user_printer_id": {
+					"name": "user_printer_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"status": {
+					"name": "status",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"tags": {
+					"name": "tags",
+					"type": "jsonb",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {
+				"prints_user_id_idx": {
+					"name": "prints_user_id_idx",
+					"columns": ["user_id"],
+					"isUnique": false
+				},
+				"prints_user_printer_id_idx": {
+					"name": "prints_user_printer_id_idx",
+					"columns": ["user_printer_id"],
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {
+				"prints_user_id_users_id_fk": {
+					"name": "prints_user_id_users_id_fk",
+					"tableFrom": "prints",
+					"tableTo": "users",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"prints_user_printer_id_user_printers_id_fk": {
+					"name": "prints_user_printer_id_user_printers_id_fk",
+					"tableFrom": "prints",
+					"tableTo": "user_printers",
+					"columnsFrom": ["user_printer_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"spools": {
+			"name": "spools",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"sku": {
+					"name": "sku",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"material": {
+					"name": "material",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"color_name": {
+					"name": "color_name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"color": {
+					"name": "color",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"brand": {
+					"name": "brand",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"original_quantity": {
+					"name": "original_quantity",
+					"type": "numeric(12, 2)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"remaining_quantity": {
+					"name": "remaining_quantity",
+					"type": "numeric(12, 2)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"purchase_price": {
+					"name": "purchase_price",
+					"type": "numeric(12, 2)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"purchase_date": {
+					"name": "purchase_date",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"location_id": {
+					"name": "location_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"last_dried_date": {
+					"name": "last_dried_date",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"tags": {
+					"name": "tags",
+					"type": "jsonb",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {
+				"spools_sku_idx": {
+					"name": "spools_sku_idx",
+					"columns": ["sku"],
+					"isUnique": false
+				},
+				"spools_user_id_idx": {
+					"name": "spools_user_id_idx",
+					"columns": ["user_id"],
+					"isUnique": false
+				},
+				"spools_original_quantity_idx": {
+					"name": "spools_original_quantity_idx",
+					"columns": ["original_quantity"],
+					"isUnique": false
+				},
+				"spools_material_idx": {
+					"name": "spools_material_idx",
+					"columns": ["material"],
+					"isUnique": false
+				},
+				"spools_color_name_idx": {
+					"name": "spools_color_name_idx",
+					"columns": ["color_name"],
+					"isUnique": false
+				},
+				"spools_brand_idx": {
+					"name": "spools_brand_idx",
+					"columns": ["brand"],
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {
+				"spools_user_id_users_id_fk": {
+					"name": "spools_user_id_users_id_fk",
+					"tableFrom": "spools",
+					"tableTo": "users",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"spools_location_id_locations_id_fk": {
+					"name": "spools_location_id_locations_id_fk",
+					"tableFrom": "spools",
+					"tableTo": "locations",
+					"columnsFrom": ["location_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"user_printers": {
+			"name": "user_printers",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"printer_id": {
+					"name": "printer_id",
+					"type": "bigint",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"nickname": {
+					"name": "nickname",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"location_ids": {
+					"name": "location_ids",
+					"type": "jsonb",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"tags": {
+					"name": "tags",
+					"type": "jsonb",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {
+				"user_printers_user_nickname_idx": {
+					"name": "user_printers_user_nickname_idx",
+					"columns": ["user_id", "nickname"],
+					"isUnique": true
+				}
+			},
+			"foreignKeys": {
+				"user_printers_user_id_users_id_fk": {
+					"name": "user_printers_user_id_users_id_fk",
+					"tableFrom": "user_printers",
+					"tableTo": "users",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"user_printers_printer_id_printers_id_fk": {
+					"name": "user_printers_printer_id_printers_id_fk",
+					"tableFrom": "user_printers",
+					"tableTo": "printers",
+					"columnsFrom": ["printer_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"users": {
+			"name": "users",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "bigserial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"username": {
+					"name": "username",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"email": {
+					"name": "email",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {
+				"users_username_unique": {
+					"name": "users_username_unique",
+					"nullsNotDistinct": false,
+					"columns": ["username"]
+				},
+				"users_email_unique": {
+					"name": "users_email_unique",
+					"nullsNotDistinct": false,
+					"columns": ["email"]
+				}
+			}
+		}
+	},
+	"enums": {},
+	"schemas": {},
+	"_meta": {
+		"columns": {},
+		"schemas": {},
+		"tables": {}
+	}
 }
