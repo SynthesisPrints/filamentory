@@ -1,17 +1,22 @@
-import { bigserial, pgTable, uniqueIndex, text, index, timestamp, jsonb, numeric, bigint } from 'drizzle-orm/pg-core';
-
-export const users = pgTable('users', {
-	id: bigserial('id', { mode: 'number' }).primaryKey(),
-	username: text('username').unique(),
-	email: text('email').unique(),
-});
+import {
+	bigint,
+	bigserial,
+	index,
+	interval,
+	jsonb,
+	numeric,
+	pgTable,
+	text,
+	timestamp,
+	uniqueIndex,
+} from 'drizzle-orm/pg-core';
 
 export const locations = pgTable(
 	'locations',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
 		name: text('name'),
-		user_id: bigint('user_id', { mode: 'number' }).references(() => users.id),
+		user_id: text('user_id'),
 		description: text('description'),
 		type: text('type'),
 	},
@@ -24,7 +29,7 @@ export const spools = pgTable(
 	'spools',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
-		user_id: bigint('user_id', { mode: 'number' }).references(() => users.id),
+		user_id: text('user_id'),
 		sku: text('sku'),
 		material: text('material'),
 		color_name: text('color_name'),
@@ -59,7 +64,7 @@ export const user_printers = pgTable(
 	'user_printers',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
-		user_id: bigint('user_id', { mode: 'number' }).references(() => users.id),
+		user_id: text('user_id'),
 		printer_id: bigint('printer_id', { mode: 'number' }).references(() => printers.id),
 		nickname: text('nickname'),
 		location_ids: jsonb('location_ids'),
@@ -76,9 +81,9 @@ export const prints = pgTable(
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
 		name: text('name'),
 		url: text('url'),
-		user_id: bigint('user_id', { mode: 'number' }).references(() => users.id),
+		user_id: text('user_id'),
 		start_time: timestamp('start_time', { withTimezone: true }),
-		end_time: timestamp('end_time', { withTimezone: true }),
+		duration: interval('duration', { precision: 0 }),
 		user_printer_id: bigint('user_printer_id', { mode: 'number' }).references(() => user_printers.id),
 		status: text('status'),
 		tags: jsonb('tags'),

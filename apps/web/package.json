@@ -13,6 +13,7 @@
 		"db:studio": "pnpm drizzle-kit studio"
 	},
 	"dependencies": {
+		"@clerk/nextjs": "^4.29.7",
 		"@neondatabase/serverless": "^0.8.1",
 		"@repo/ui": "workspace:*",
 		"drizzle-orm": "^0.29.3",
