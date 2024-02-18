@@ -1,0 +1,46 @@
+{
+	"name": "spoolhub",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"format": "prettier --write \"**/*.{js,mjs,cjs,jsx,ts,tsx,html,vue,css,less,scss,htm,hbs,json,graphql,gql,md,markdown,mdx,yaml,yml}\"",
+		"turbo:update": "pnpx @turbo/codemod@latest update"
+	},
+	"devDependencies": {
+		"@repo/eslint-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"cross-env": "^7.0.3",
+		"prettier": "^3.2.5",
+		"turbo": "^1.12.4"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"prettier": {
+		"singleQuote": true,
+		"trailingComma": "all",
+		"printWidth": 120,
+		"useTabs": true
+	},
+	"eslintConfig": {
+		"ignorePatterns": [
+			"apps/**",
+			"packages/**"
+		],
+		"extends": [
+			"@repo/eslint-config/library.js"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"project": true
+		}
+	},
+	"postcss": {
+		"plugins": {
+			"tailwindcss": {},
+			"autoprefixer": {}
+		}
+	}
+}

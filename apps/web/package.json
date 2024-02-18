@@ -1,0 +1,60 @@
+{
+	"name": "web",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint . --max-warnings 0",
+		"db:add-migration": "cross-env NODE_ENV=production pnpm drizzle-kit generate:pg",
+		"db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
+		"db:migrate": "cross-env NODE_ENV=production pnpx tsx db/migrate.ts",
+		"db:studio": "pnpm drizzle-kit studio"
+	},
+	"dependencies": {
+		"@clerk/nextjs": "^4.29.7",
+		"@neondatabase/serverless": "^0.8.1",
+		"@repo/ui": "workspace:*",
+		"drizzle-orm": "^0.29.3",
+		"next": "^14.1.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@next/eslint-plugin-next": "^14.1.0",
+		"@repo/eslint-config": "workspace:*",
+		"@repo/tailwind-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@types/eslint": "^8.56.2",
+		"@types/node": "^20.11.19",
+		"@types/react": "^18.2.56",
+		"@types/react-dom": "^18.2.19",
+		"autoprefixer": "^10.4.17",
+		"dotenv": "^16.4.4",
+		"drizzle-kit": "^0.20.14",
+		"eslint": "^8.56.0",
+		"pg": "^8.11.3",
+		"postcss": "^8.4.35",
+		"postgres": "^3.4.3",
+		"tailwindcss": "^3.4.1",
+		"tsx": "^4.7.1",
+		"typescript": "^5.3.3"
+	},
+	"eslintConfig": {
+		"root": true,
+		"extends": [
+			"@repo/eslint-config/next.js"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"project": true
+		}
+	},
+	"postcss": {
+		"plugins": {
+			"tailwindcss": {},
+			"autoprefixer": {}
+		}
+	}
+}
