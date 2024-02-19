@@ -10,6 +10,11 @@ const runMigrate = async () => {
 		throw new Error('DATABASE_URL is not defined');
 	}
 
+	if (process.env.NODE_ENV === 'development') {
+		console.log('Skipping migrations for development environment');
+		process.exit(0);
+	}
+
 	const databaseUrl = drizzle(postgres(`${process.env.DATABASE_URL}`, { ssl: 'require', max: 1 }));
 
 	console.log('⏳ Running migrations...');
