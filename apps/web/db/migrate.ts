@@ -1,17 +1,14 @@
-import * as dotenv from 'dotenv';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import postgres from 'postgres';
-
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const runMigrate = async () => {
 	if (!process.env.DATABASE_URL) {
 		throw new Error('DATABASE_URL is not defined');
 	}
 
-	console.log('NODE ENV: ', process.env.NODE_ENV);
-	if (process.env.NODE_ENV === 'development') {
+	console.log('VERCEL_GIT_COMMIT_REF: ', process.env.VERCEL_GIT_COMMIT_REF);
+	if (!process.env.BRANCH || process.env.BRANCH === 'develop') {
 		console.log('Skipping migrations for development environment');
 		process.exit(0);
 	}
