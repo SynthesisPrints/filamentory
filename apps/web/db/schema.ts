@@ -5,13 +5,15 @@ import {
 	interval,
 	jsonb,
 	numeric,
-	pgTable,
+	pgSchema,
 	text,
 	timestamp,
 	uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-export const locations = pgTable(
+export const spoolhubSchema = pgSchema('spoolhub');
+
+export const locations = spoolhubSchema.table(
 	'locations',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
@@ -25,7 +27,7 @@ export const locations = pgTable(
 	}),
 );
 
-export const spools = pgTable(
+export const spools = spoolhubSchema.table(
 	'spools',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
@@ -53,14 +55,14 @@ export const spools = pgTable(
 	}),
 );
 
-export const printers = pgTable('printers', {
+export const printers = spoolhubSchema.table('printers', {
 	id: bigserial('id', { mode: 'number' }).primaryKey(),
 	name: text('name'),
 	type: text('type'),
 	location_ids: jsonb('location_ids'),
 });
 
-export const user_printers = pgTable(
+export const user_printers = spoolhubSchema.table(
 	'user_printers',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
@@ -75,7 +77,7 @@ export const user_printers = pgTable(
 	}),
 );
 
-export const prints = pgTable(
+export const prints = spoolhubSchema.table(
 	'prints',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
@@ -94,7 +96,7 @@ export const prints = pgTable(
 	}),
 );
 
-export const print_spools = pgTable('print_spools', {
+export const print_spools = spoolhubSchema.table('print_spools', {
 	id: bigserial('id', { mode: 'number' }).primaryKey(),
 	print_id: bigint('print_id', { mode: 'number' }).references(() => prints.id),
 	spool_id: bigint('spool_id', { mode: 'number' }).references(() => spools.id),
