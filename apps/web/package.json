@@ -7,9 +7,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint . --max-warnings 0",
-		"db:add-migration": "cross-env NODE_ENV=production pnpm drizzle-kit generate:pg",
+		"db:add-migration": "pnpm drizzle-kit generate:pg",
 		"db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
-		"db:migrate": "cross-env NODE_ENV=production pnpx tsx db/migrate.ts",
+		"db:migrate:staging": "cross-env NODE_ENV=staging pnpx tsx db/migrate.ts",
 		"db:studio": "pnpm drizzle-kit studio"
 	},
 	"dependencies": {
