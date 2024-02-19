@@ -6,8 +6,7 @@
 		"dev": "turbo dev",
 		"lint": "turbo lint",
 		"format": "prettier --write \"**/*.{js,mjs,cjs,jsx,ts,tsx,html,vue,css,less,scss,htm,hbs,json,graphql,gql,md,markdown,mdx,yaml,yml}\"",
-		"turbo:update": "pnpx @turbo/codemod@latest update",
-		"vercel:web": "pnpx tsx apps/web/db/migrate.ts && pnpm build"
+		"turbo:update": "pnpx @turbo/codemod@latest update"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
