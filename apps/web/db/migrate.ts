@@ -10,6 +10,7 @@ const runMigrate = async () => {
 		throw new Error('DATABASE_URL is not defined');
 	}
 
+	console.log('NODE ENV: ', process.env.NODE_ENV);
 	if (process.env.NODE_ENV === 'development') {
 		console.log('Skipping migrations for development environment');
 		process.exit(0);
