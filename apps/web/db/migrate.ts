@@ -7,7 +7,13 @@ const runMigrate = async () => {
 		throw new Error('DATABASE_URL is not defined');
 	}
 
-	console.log('testing');
+	console.log('VERCEL_ENV', process.env.VERCEL_ENV);
+	console.log('VERCEL_GIT_COMMIT_REF', process.env.VERCEL_GIT_COMMIT_REF);
+
+	if (process.env.VERCEL_GIT_COMMIT_REF === 'develop') {
+		console.log(`✅ Skipping migrations for develop branch`);
+		process.exit(0);
+	}
 
 	const databaseUrl = drizzle(postgres(`${process.env.DATABASE_URL}`, { ssl: 'require', max: 1 }));
 
