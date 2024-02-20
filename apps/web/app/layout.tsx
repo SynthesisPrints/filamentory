@@ -1,9 +1,9 @@
-import './globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ClerkProvider } from '@clerk/nextjs';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/next';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
 	return (
 		<ClerkProvider>
-			<html lang="en">
+			<html lang="en" data-theme="dark">
 				<body className={inter.className}>
 					{children}
 					<SpeedInsights />
