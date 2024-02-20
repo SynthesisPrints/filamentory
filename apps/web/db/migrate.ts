@@ -10,7 +10,7 @@ const runMigrate = async () => {
 		throw new Error('DATABASE_URL is not defined');
 	}
 
-	if (!['main', 'staging'].includes(process.env.VERCEL_GIT_COMMIT_REF)) {
+	if (!['main', 'staging'].includes(process.env.VERCEL_GIT_COMMIT_REF ?? '')) {
 		console.log(`✅ Skipping migrations for develop branch`);
 		process.exit(0);
 	}
