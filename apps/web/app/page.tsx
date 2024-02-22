@@ -4,10 +4,10 @@ import circles from '../public/circles.svg';
 
 export default function Page(): JSX.Element {
 	return (
-		<main className="grid h-screen w-screen place-items-center">
+		<main className="grid h-screen w-screen place-items-center relative">
 			<div>
 				<div className="grid place-items-center">
-					<Image className="absolute" alt="glowing gradient" src={circles} />
+					<Image className="absolute size-full" alt="glowing gradient" src={circles} />
 					<Logo className="size-40" />
 				</div>
 				<h1 className="text-5xl font-black">
