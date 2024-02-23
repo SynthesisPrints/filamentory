@@ -1,0 +1,24 @@
+{
+	"background_color": "#18181b",
+	"description": "todo: add tagline",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"id": "spoolhub",
+	"name": "spoolhub",
+	"orientation": "any",
+	"scope": ".",
+	"short_name": "spoolhub",
+	"start_url": "/",
+	"theme_color": "#18181b"
+}
