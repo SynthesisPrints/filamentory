@@ -20,6 +20,13 @@ export const metadata: Metadata = {
 		template: APP_TITLE_TEMPLATE,
 	},
 	description: APP_DESCRIPTION,
+	metadataBase: (() => {
+		// If VERCEL_URL is defined, return a URL object using it
+		if (process.env.VERCEL_URL) {
+			return new URL(`https://${process.env.VERCEL_URL}`);
+		}
+		return new URL('http://localhost:3000');
+	})(),
 	appleWebApp: {
 		capable: true,
 		statusBarStyle: 'default',
