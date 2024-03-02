@@ -11,7 +11,10 @@
 		"db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
 		"db:migrate:staging": "cross-env NODE_ENV=staging pnpx tsx db/migrate.ts",
 		"db:studio": "pnpm drizzle-kit studio",
-		"vercel:build": "pnpx tsx db/migrate.ts && pnpm build"
+		"vercel:build": "pnpx tsx db/migrate.ts && pnpm build",
+		"dotenv:push": "pnpx dotenv-vault@latest push",
+		"dotenv:pull": "pnpx dotenv-vault@latest pull",
+		"dotenv:login": "pnpx dotenv-vault@latest login"
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^4.29.7",
