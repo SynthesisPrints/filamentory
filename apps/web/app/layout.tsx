@@ -1,4 +1,6 @@
+import { Header } from '@/components/header';
 import { ClerkProvider } from '@clerk/nextjs';
+import { cn } from '@repo/ui';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
 	return (
 		<ClerkProvider>
-			<html lang="en" data-theme="dark">
+			<html lang="en" data-theme="dark" className="scroll-smooth">
 				<head>
 					<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 					<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -70,8 +72,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 				</head>
 
-				<body className={inter.className}>
-					{children}
+				<body className={cn(inter.className, 'grid grid-rows-[auto_1fr_auto] min-h-[100dvh]')}>
+					<Header />
+					<main>{children}</main>
+					<footer>world</footer>
 					<SpeedInsights />
 					<Analytics />
 				</body>
