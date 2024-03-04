@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa6';
+import { cn } from '.';
 
-export type ThemeToggleProps = {};
+export type ThemeToggleProps = ComponentProps<'button'>;
 
-export const ThemeToggle = (props: ThemeToggleProps) => {
-	const [theme, setTheme] = useState('dark');
+export const ThemeToggle = ({ className, children, ...props }: ThemeToggleProps) => {
+	const [theme, setTheme] = useState(document.querySelector('html')!.getAttribute('data-theme') ?? 'dark');
 
 	const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
@@ -14,10 +16,8 @@ export const ThemeToggle = (props: ThemeToggleProps) => {
 	}, [theme]);
 
 	return (
-		<>
-			<button onClick={toggleTheme} className="btn">
-				Current: {theme === 'dark' ? 'Dark' : 'Light'}
-			</button>
-		</>
+		<button onClick={toggleTheme} className={cn('btn', className)}>
+			{children ? children : theme === 'dark' ? <FaSun /> : <FaMoon />}
+		</button>
 	);
 };
