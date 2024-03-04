@@ -54,7 +54,13 @@ const lightTheme: Partial<DaisyUiTheme> = {
 
 const config: Config = {
 	darkMode: ['class'],
-	content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+	content: [
+		'./pages/**/*.{ts,tsx}',
+		'./components/**/*.{ts,tsx}',
+		'./app/**/*.{ts,tsx}',
+		'./src/**/*.{ts,tsx}',
+		'./node_modules/@repo/ui/**/*.{ts,tsx}',
+	],
 	theme: {},
 	plugins: [daisyui],
 	daisyui: {

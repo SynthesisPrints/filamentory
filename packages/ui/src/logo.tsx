@@ -1,7 +1,18 @@
 import { SVGProps } from 'react';
 import { orange, zinc } from 'tailwindcss/colors';
-export const Logo = (props: SVGProps<SVGSVGElement>) => (
-	<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" {...props}>
+import { cn } from '.';
+
+export type LogoProps = SVGProps<SVGSVGElement> & {
+	trim?: boolean;
+};
+
+export const Logo = ({ trim, className, ...props }: LogoProps) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox={`0 0 100 ${trim ? 88 : 100}`}
+		className={cn('w-fit h-full', className)}
+		{...props}
+	>
 		<style>{`path{fill:${zinc[900]}}@media (prefers-color-scheme:dark){path{fill:oklch(var(--bc))}}`}</style>
 		<path
 			fillRule="evenodd"
