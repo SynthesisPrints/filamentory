@@ -8,6 +8,7 @@
 		"start": "next start",
 		"lint": "eslint . --max-warnings 0",
 		"db:add-migration": "pnpm drizzle-kit generate:pg",
+		"db:add-custom-migration": "pnpm drizzle-kit generate:pg --custom",
 		"db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
 		"db:migrate:staging": "cross-env NODE_ENV=staging pnpx tsx db/migrate.ts",
 		"db:studio": "pnpm drizzle-kit studio",

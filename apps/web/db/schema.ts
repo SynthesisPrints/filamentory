@@ -57,9 +57,8 @@ export const spools = spoolhubSchema.table(
 
 export const printers = spoolhubSchema.table('printers', {
 	id: bigserial('id', { mode: 'number' }).primaryKey(),
-	name: text('name'),
-	type: text('type'),
-	location_ids: jsonb('location_ids'),
+	model: text('model'),
+	brand: text('brand'),
 });
 
 export const user_printers = spoolhubSchema.table(
