@@ -140,6 +140,9 @@ export const printer_brands = spoolhubSchema.table(
 	}),
 );
 
+export type PrinterBrand = typeof printer_brands.$inferSelect;
+export type NewPrinterBrand = typeof printer_brands.$inferInsert;
+
 export const printer_models = spoolhubSchema.table(
 	'printer_models',
 	{

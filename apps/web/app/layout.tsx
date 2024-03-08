@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import { zinc } from 'tailwindcss/colors';
 import './globals.css';
 
@@ -74,10 +75,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 
 				<body className={cn(inter.className, 'grid grid-rows-[auto_1fr_auto] min-h-[100dvh]')}>
 					<Header />
-					<main>{children}</main>
+					<main className="grid grid-cols-[1fr_min(80ch,_100%)_1fr] [&>*]:col-[2] [&>.full-bleed]:col-[1/4] py-4">
+						{children}
+					</main>
 					<footer>world</footer>
 					<SpeedInsights />
 					<Analytics />
+					<Toaster richColors className="[&_path]:fill-current" />
 				</body>
 			</html>
 		</ClerkProvider>
