@@ -8,6 +8,7 @@
 		"start": "next start",
 		"lint": "eslint . --max-warnings 0",
 		"db:add-migration": "pnpm drizzle-kit generate:pg",
+		"db:add-custom-migration": "pnpm drizzle-kit generate:pg --custom",
 		"db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
 		"db:migrate:staging": "cross-env NODE_ENV=staging pnpx tsx db/migrate.ts",
 		"db:studio": "pnpm drizzle-kit studio",
@@ -16,6 +17,7 @@
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^4.29.9",
+		"@hookform/resolvers": "^3.3.4",
 		"@neondatabase/serverless": "^0.9.0",
 		"@repo/ui": "workspace:*",
 		"@serwist/next": "^8.4.4",
@@ -26,7 +28,9 @@
 		"drizzle-orm": "^0.29.4",
 		"next": "^14.1.2",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"react-hook-form": "^7.51.0",
+		"sonner": "^1.4.3"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^14.1.2",
@@ -47,7 +51,8 @@
 		"react-icons": "^5.0.1",
 		"tailwindcss": "^3.4.1",
 		"tsx": "^4.7.1",
-		"typescript": "^5.3.3"
+		"typescript": "^5.3.3",
+		"zod": "^3.22.4"
 	},
 	"eslintConfig": {
 		"root": true,

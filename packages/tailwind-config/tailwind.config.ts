@@ -1,6 +1,7 @@
 import daisyui from 'daisyui';
 import themes from 'daisyui/src/theming/themes';
 import { Config } from 'tailwindcss';
+import tailwindCssAnimate from 'tailwindcss-animate';
 import { green, lime, orange, red, sky, white, zinc } from 'tailwindcss/colors';
 
 type DaisyUiTheme = {
@@ -61,8 +62,30 @@ const config: Config = {
 		'./src/**/*.{ts,tsx}',
 		'./node_modules/@repo/ui/**/*.{ts,tsx}',
 	],
-	theme: {},
-	plugins: [daisyui],
+	theme: {
+		container: {
+			center: true,
+			padding: '2rem',
+			screens: {
+				'2xl': '1400px',
+			},
+		},
+		keyframes: {
+			'accordion-down': {
+				from: { height: '0' },
+				to: { height: 'var(--radix-accordion-content-height)' },
+			},
+			'accordion-up': {
+				from: { height: 'var(--radix-accordion-content-height)' },
+				to: { height: '0' },
+			},
+		},
+		animation: {
+			'accordion-down': 'accordion-down 0.2s ease-out',
+			'accordion-up': 'accordion-up 0.2s ease-out',
+		},
+	},
+	plugins: [daisyui, tailwindCssAnimate],
 	daisyui: {
 		themes: [
 			{

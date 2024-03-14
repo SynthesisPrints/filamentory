@@ -2,8 +2,8 @@ import { ThemeToggle } from '@repo/ui';
 
 export default function Page() {
 	return (
-		<>
-			<div className="grid h-screen w-screen place-items-center">
+		<div className="grid gap-4">
+			<div className="grid place-items-center">
 				<div className="grid grid-cols-4 gap-4">
 					<button className="btn btn-primary ">primary</button>
 					<button className="btn btn-secondary">secondary</button>
@@ -277,6 +277,6 @@ export default function Page() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

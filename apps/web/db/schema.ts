@@ -18,7 +18,7 @@ export const locations = spoolhubSchema.table(
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
 		name: text('name'),
-		user_id: text('user_id'),
+		user_id: text('user_id').notNull(),
 		description: text('description'),
 		type: text('type'),
 	},
@@ -31,7 +31,7 @@ export const spools = spoolhubSchema.table(
 	'spools',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
-		user_id: text('user_id'),
+		user_id: text('user_id').notNull(),
 		sku: text('sku'),
 		material: text('material'),
 		color_name: text('color_name'),
@@ -55,19 +55,17 @@ export const spools = spoolhubSchema.table(
 	}),
 );
 
-export const printers = spoolhubSchema.table('printers', {
-	id: bigserial('id', { mode: 'number' }).primaryKey(),
-	name: text('name'),
-	type: text('type'),
-	location_ids: jsonb('location_ids'),
-});
-
 export const user_printers = spoolhubSchema.table(
 	'user_printers',
 	{
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
-		user_id: text('user_id'),
-		printer_id: bigint('printer_id', { mode: 'number' }).references(() => printers.id),
+		user_id: text('user_id').notNull(),
+		printer_model_id: bigint('printer_model_id', { mode: 'number' })
+			.references(() => printer_models.id)
+			.notNull(),
+		printer_brand_id: bigint('printer_brand_id', { mode: 'number' })
+			.references(() => printer_brands.id)
+			.notNull(),
 		nickname: text('nickname'),
 		location_ids: jsonb('location_ids'),
 		tags: jsonb('tags'),
@@ -83,7 +81,7 @@ export const prints = spoolhubSchema.table(
 		id: bigserial('id', { mode: 'number' }).primaryKey(),
 		name: text('name'),
 		url: text('url'),
-		user_id: text('user_id'),
+		user_id: text('user_id').notNull(),
 		start_time: timestamp('start_time', { withTimezone: true }),
 		duration: interval('duration', { precision: 0 }),
 		user_printer_id: bigint('user_printer_id', { mode: 'number' }).references(() => user_printers.id),
@@ -102,3 +100,61 @@ export const print_spools = spoolhubSchema.table('print_spools', {
 	spool_id: bigint('spool_id', { mode: 'number' }).references(() => spools.id),
 	amount_used: numeric('amount_used', { precision: 12, scale: 2 }),
 });
+
+export const filament_types = spoolhubSchema.table(
+	'filament_types',
+	{
+		id: bigserial('id', { mode: 'number' }).primaryKey(),
+		name: text('name'),
+		user_id: text('user_id'),
+	},
+	(table) => ({
+		nameIndex: index('filament_types_name_idx').on(table.name),
+		userIdIndex: index('filament_types_user_id_idx').on(table.user_id),
+	}),
+);
+
+export const filament_brands = spoolhubSchema.table(
+	'filament_brands',
+	{
+		id: bigserial('id', { mode: 'number' }).primaryKey(),
+		name: text('name'),
+		user_id: text('user_id'),
+	},
+	(table) => ({
+		nameIndex: index('filament_brands_name_idx').on(table.name),
+		userIdIndex: index('filament_brands_user_id_idx').on(table.user_id),
+	}),
+);
+
+export const printer_brands = spoolhubSchema.table(
+	'printer_brands',
+	{
+		id: bigserial('id', { mode: 'number' }).primaryKey(),
+		name: text('name'),
+		user_id: text('user_id'),
+	},
+	(table) => ({
+		nameIndex: index('printer_brands_name_idx').on(table.name),
+		userIdIndex: index('printer_brands_user_id_idx').on(table.user_id),
+	}),
+);
+
+export type PrinterBrand = typeof printer_brands.$inferSelect;
+export type NewPrinterBrand = typeof printer_brands.$inferInsert;
+
+export const printer_models = spoolhubSchema.table(
+	'printer_models',
+	{
+		id: bigserial('id', { mode: 'number' }).primaryKey(),
+		printer_brand_id: bigint('printer_brand_id', { mode: 'number' })
+			.references(() => printer_brands.id)
+			.notNull(),
+		name: text('name'),
+		user_id: text('user_id'),
+	},
+	(table) => ({
+		nameIndex: index('printer_models_name_idx').on(table.name),
+		userIdIndex: index('printer_models_user_id_idx').on(table.user_id),
+	}),
+);

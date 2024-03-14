@@ -1,13 +1,11 @@
-import { redirect } from 'next/navigation';
 import { checkRole } from '@/utils/roles';
-import { SearchUsers } from './_search-users';
 import { clerkClient } from '@clerk/nextjs';
+import { redirect } from 'next/navigation';
 import { setRole } from './_actions';
+import { SearchUsers } from './_search-users';
 
 export default async function AdminDashboard(params: { searchParams: { search?: string } }) {
-	if (!checkRole('admin')) {
-		redirect('/');
-	}
+	if (!checkRole('admin')) redirect('/');
 
 	const query = params.searchParams.search;
 
