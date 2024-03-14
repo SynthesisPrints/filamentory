@@ -1,6 +1,6 @@
+import { cn } from '@/lib';
 import { SVGProps } from 'react';
 import { orange, zinc } from 'tailwindcss/colors';
-import { cn } from '.';
 
 export type LogoProps = SVGProps<SVGSVGElement> & {
 	trim?: boolean;
