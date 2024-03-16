@@ -1,6 +1,6 @@
 import { Header } from '@/components/header';
 import { ClerkProvider } from '@clerk/nextjs';
-import { ThemeToggle, cn } from '@repo/ui';
+import { ThemeProvider, ThemeToggle, cn } from '@repo/ui';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 				},
 			}}
 		>
-			<html lang="en" data-theme="dark" className="dark scroll-smooth">
+			<html suppressHydrationWarning lang="en" className="scroll-smooth">
 				<head>
 					<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 					<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -88,16 +88,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 				</head>
 
 				<body className={cn(inter.className, 'grid grid-rows-[auto_1fr_auto] min-h-[100dvh]')}>
-					<Header />
-					<main className="grid grid-cols-[1fr_min(80ch,_100%)_1fr] [&>*]:col-[2] [&>.full-bleed]:col-[1/4] py-4">
-						{children}
-					</main>
-					<footer>
-						<ThemeToggle />
-					</footer>
-					<SpeedInsights />
-					<Analytics />
-					<Toaster richColors className="[&_path]:fill-current" />
+					<ThemeProvider>
+						<Header />
+						<main className="grid grid-cols-[1fr_min(80ch,_100%)_1fr] [&>*]:col-[2] [&>.full-bleed]:col-[1/4] py-4">
+							{children}
+						</main>
+						<footer>
+							<ThemeToggle />
+						</footer>
+						<SpeedInsights />
+						<Analytics />
+						<Toaster richColors className="[&_path]:fill-current" />
+					</ThemeProvider>
 				</body>
 			</html>
 		</ClerkProvider>
