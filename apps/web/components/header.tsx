@@ -10,7 +10,7 @@ export const Header = () => {
 	const { user } = useUser();
 
 	return (
-		<header className="grid grid-flow-col justify-between items-center p-2 bg-base-200">
+		<header className="grid grid-flow-col justify-between items-center p-2 bg-base-200 min-h-16">
 			<div className="grid gap-2 grid-flow-col items-center">
 				<SignedIn>
 					<button className="btn btn-ghost min-h-0 size-auto p-1" onClick={() => setOpen(true)}>
