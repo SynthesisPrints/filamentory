@@ -1,0 +1,14 @@
+{
+	"Co-Authored-By": {
+		"prefix": "::co-authored-by",
+		"body": ["Co-authored-by: ${1:username} <${2:email}>"],
+	},
+	"Co-Authored-By Nate": {
+		"prefix": "::co-authored-by-nate",
+		"body": ["Co-authored-by: Nathan Kamenar <nkamenar.it@gmail.com>"],
+	},
+	"Co-Authored-By Justin": {
+		"prefix": "::co-authored-by-justin",
+		"body": ["Co-authored-by: Justin Trenary <trenaryja@gmail.com>"],
+	},
+}

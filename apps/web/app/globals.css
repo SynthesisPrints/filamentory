@@ -1,7 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.stacked > * {
-	grid-area: 1 / 1 / 2 / 2;
-}
