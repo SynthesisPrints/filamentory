@@ -13,10 +13,11 @@
 		"db:migrate:staging": "cross-env NODE_ENV=staging pnpx tsx db/migrate.ts",
 		"db:studio": "pnpm drizzle-kit studio",
 		"vercel:build": "pnpx tsx db/migrate.ts && pnpm build",
-		"env:pull": "infisical export --env=dev > .env"
+		"env:pull": "infisical export --env=dev > .env",
+		"ngrok": "ngrok http 3000"
 	},
 	"dependencies": {
-		"@clerk/nextjs": "^4.29.9",
+		"@clerk/nextjs": "5.0.0-beta.34",
 		"@hookform/resolvers": "^3.3.4",
 		"@neondatabase/serverless": "^0.9.0",
 		"@repo/ui": "workspace:*",
@@ -45,6 +46,7 @@
 		"dotenv": "^16.4.5",
 		"drizzle-kit": "^0.20.14",
 		"eslint": "^8.57.0",
+		"ngrok": "5.0.0-beta.2",
 		"pg": "^8.11.3",
 		"postcss": "^8.4.37",
 		"postgres": "^3.4.3",
