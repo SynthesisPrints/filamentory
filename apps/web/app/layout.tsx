@@ -62,16 +62,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 	return (
 		<ClerkProvider
 			appearance={{
+				// TODO: Add custom themeing here
 				elements: {
-					navbar: 'bg-base-100 [&_*]:text-base-content',
-					navbarButton: 'bg-base-100',
-					userButtonPopoverFooter: '!bg-base-200 !text-base-content [&>*:last-child_path]:fill-base-content',
-					card: 'bg-base-200 [&_*]:text-base-content [&>*:last-child]:bg-accent [&>*:last-child>*]:text-accent-content [&>*:last-child_path]:fill-accent-content',
-					formButtonPrimary: 'bg-accent !text-accent-content hover:bg-accent hover:brightness-90',
-					formFieldInput: 'input',
-					socialButtonsIconButton__github: 'dark:[&>img]:invert',
+					// navbar: 'bg-base-100 [&_*]:text-base-content',
+					// navbarButton: 'bg-base-100',
+					// userButtonPopoverFooter: '!bg-base-200 !text-base-content [&>*:last-child_path]:fill-base-content',
+					card: 'bg-base-200 [&_*]:text-base-content',
+					// formButtonPrimary: 'bg-accent !text-accent-content hover:bg-accent hover:brightness-90',
+					// formFieldInput: 'input',
+					// socialButtonsIconButton__github: 'dark:[&>img]:invert',
 					providerIcon__github: 'dark:invert',
-					profileSection__danger: '[&_button]:text-error-content [&_button]:bg-error',
+					// profileSection__danger: '[&_button]:text-error-content [&_button]:bg-error',
 				},
 			}}
 		>

@@ -2,7 +2,7 @@ import { Logo } from '@repo/ui';
 
 export default function Page(): JSX.Element {
 	return (
-		<div className="grid h-full w-full place-items-center">
+		<div className="grid size-full place-items-center">
 			<div>
 				<div className="grid place-items-center stacked">
 					<div className="z-[-2] size-40 ring ring-base-content/25 rounded-full animate-[ping_2s_infinite]" />

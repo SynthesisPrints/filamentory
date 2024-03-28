@@ -8,10 +8,11 @@
 	}
 }
 
+/* TODO: Enable nesting for css */
 .stacked {
 	display: grid;
+}
 
-	> * {
-		grid-area: 1 / 1 / 2 / 2;
-	}
+.stacked > * {
+	grid-area: 1 / 1 / 2 / 2;
 }

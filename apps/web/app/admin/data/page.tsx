@@ -1,11 +1,7 @@
 import { db } from '@/db';
-import { checkRole } from '@/utils/roles';
-import { redirect } from 'next/navigation';
 import { AddForm } from './add-form';
 
 export default async function DataDashboard() {
-	if (!checkRole('admin')) redirect('/');
-
 	const printerBrands = await db.query.printer_brands.findMany();
 
 	return (
