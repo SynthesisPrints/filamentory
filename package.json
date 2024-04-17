@@ -13,7 +13,7 @@
 		"@repo/typescript-config": "workspace:*",
 		"cross-env": "^7.0.3",
 		"prettier": "^3.2.5",
-		"turbo": "^1.12.5",
+		"turbo": "^1.13.0",
 		"vercel": "^33.6.1"
 	},
 	"engines": {

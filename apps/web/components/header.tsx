@@ -23,16 +23,14 @@ export const Header = () => {
 					<span className="text-accent">hub</span>
 				</h1>
 			</div>
-			<div className="grid grid-flow-col items-center gap-2">
-				<SignedIn>
-					<UserButton afterSignOutUrl="/" />
-				</SignedIn>
-				<SignedOut>
-					<SignInButton>
-						<button className="btn btn-ghost">Sign In</button>
-					</SignInButton>
-				</SignedOut>
-			</div>
+			<SignedIn>
+				<UserButton afterSignOutUrl="/" />
+			</SignedIn>
+			<SignedOut>
+				<SignInButton>
+					<button className="btn btn-ghost">Sign In</button>
+				</SignInButton>
+			</SignedOut>
 
 			<Drawer show={open} onClose={setOpen} header={user?.fullName}>
 				<ThemeToggle />

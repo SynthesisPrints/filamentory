@@ -1,15 +1,10 @@
-import { checkRole } from '@/utils/roles';
-import { clerkClient } from '@clerk/nextjs';
-import { redirect } from 'next/navigation';
+import { clerkClient } from '@clerk/nextjs/server';
 import { setRole } from './_actions';
 import { SearchUsers } from './_search-users';
 
 export default async function AdminDashboard(params: { searchParams: { search?: string } }) {
-	if (!checkRole('admin')) redirect('/');
-
 	const query = params.searchParams.search;
-
-	const users = query ? await clerkClient.users.getUserList({ query }) : [];
+	const users = await clerkClient.users.getUserList({ query });
 
 	return (
 		<>
@@ -18,7 +13,7 @@ export default async function AdminDashboard(params: { searchParams: { search?: 
 
 			<SearchUsers />
 
-			{users.map((user) => {
+			{users.data.map((user) => {
 				return (
 					<div key={user.id}>
 						<div>

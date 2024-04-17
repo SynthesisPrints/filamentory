@@ -8,7 +8,7 @@
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
-		"daisyui": "^4.7.3"
+		"daisyui": "^4.9.0"
 	},
 	"dependencies": {
 		"tailwindcss": "^3.4.1",
