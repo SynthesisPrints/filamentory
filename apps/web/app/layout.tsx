@@ -64,15 +64,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
 			appearance={{
 				// TODO: Add custom themeing here
 				elements: {
-					// navbar: 'bg-base-100 [&_*]:text-base-content',
-					// navbarButton: 'bg-base-100',
-					// userButtonPopoverFooter: '!bg-base-200 !text-base-content [&>*:last-child_path]:fill-base-content',
-					card: 'bg-base-200 [&_*]:text-base-content',
-					// formButtonPrimary: 'bg-accent !text-accent-content hover:bg-accent hover:brightness-90',
-					// formFieldInput: 'input',
-					// socialButtonsIconButton__github: 'dark:[&>img]:invert',
+					rootBox: '[&_*]:text-base-content',
+					actionCard: 'bg-base-100',
+					button: 'btn hover:text-base-content',
+					formFieldInputShowPasswordButton: 'btn-sm',
+					card: 'bg-base-200',
+					checkbox: 'checkbox',
+					input: 'input',
+					footer: 'bg-base-200 bg-none',
+					formButtonPrimary: '!btn-accent [&_*]:!text-accent-content',
+					menuList: 'bg-base-100/50',
+					navbar: 'bg-base-200 bg-none',
+					profileSection__danger: '[&_button]:btn-error [&_button]:hover:text-error-content',
 					providerIcon__github: 'dark:invert',
-					// profileSection__danger: '[&_button]:text-error-content [&_button]:bg-error',
+					scrollBox: 'bg-base-100',
+					userButtonTrigger: 'btn-link',
+					userButtonPopoverActionButton: '[&_*]:!bg-transparent',
+					userButtonPopoverCard: '[&_*]:bg-base-200 [&_*]:!text-base-content [&_*]:bg-none',
 				},
 			}}
 		>
